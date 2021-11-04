@@ -1,26 +1,28 @@
 package com.fernandonieto.hackdetection.domain.port.input;
 
 import com.fernandonieto.hackdetection.domain.model.LogFile;
+import com.fernandonieto.hackdetection.domain.model.LoginAction;
 import com.fernandonieto.hackdetection.domain.port.output.LogFileRepository;
 import com.fernandonieto.hackdetection.domain.validator.EntryValidator;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Slf4j
-@RequiredArgsConstructor
+@Service
 public class HackerDetectorImpl implements HackerDetector {
 
     private static final String SEPARATOR = ",";
+    private static final String EMPTY = "";
 
-    @NonNull
+    @Autowired
     private LogFileRepository repository;
-    @NonNull
+    @Autowired
     private EntryValidator validator;
 
     @SneakyThrows
@@ -32,10 +34,10 @@ public class HackerDetectorImpl implements HackerDetector {
                 validator.dateValidate(collect.get(1)),
                 validator.actionValidate(collect.get(2)),
                 collect.get(3));
-        if (model.getAction().equals(LogFile.LoginAction.SIGNIN_FAILURE)) {
+        if (model.getAction().equals(LoginAction.SIGNIN_FAILURE)) {
             return manageLog(model);
         }
-        return "";
+        return EMPTY;
 
     }
 

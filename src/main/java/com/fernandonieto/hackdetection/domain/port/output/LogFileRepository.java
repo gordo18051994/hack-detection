@@ -6,8 +6,6 @@ public interface LogFileRepository {
 
     LogFile saveLogin(LogFile model);
 
-    LogFile findByIp(LogFile model);
-
     void deleteOlderLogins();
 
 }

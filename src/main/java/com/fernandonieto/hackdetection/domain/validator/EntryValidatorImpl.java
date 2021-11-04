@@ -1,7 +1,7 @@
 package com.fernandonieto.hackdetection.domain.validator;
 
 import com.fernandonieto.hackdetection.domain.exception.InvalidDataException;
-import com.fernandonieto.hackdetection.domain.model.LogFile;
+import com.fernandonieto.hackdetection.domain.model.LoginAction;
 
 import java.time.Instant;
 import java.time.LocalDateTime;
@@ -36,9 +36,9 @@ public class EntryValidatorImpl implements EntryValidator {
     }
 
     @Override
-    public LogFile.LoginAction actionValidate(final String action) {
+    public LoginAction actionValidate(final String action) {
         try {
-            return LogFile.LoginAction.valueOf(action);
+            return LoginAction.valueOf(action);
         } catch (final IllegalArgumentException e){
             throw new InvalidDataException(INCORRECT_ACTION, e);
         }

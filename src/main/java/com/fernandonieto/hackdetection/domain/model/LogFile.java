@@ -15,11 +15,6 @@ public class LogFile implements Serializable {
     private static final long serialVersionUID = -8694290682614828272L;
     private static final int MAX_LOGIN_FAIL = 5;
 
-    public enum LoginAction {
-        SIGNIN_SUCCESS,
-        SIGNIN_FAILURE;
-    }
-
     private String ip;
     private LocalDateTime date;
     private LoginAction action;

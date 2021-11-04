@@ -1,6 +1,6 @@
 package com.fernandonieto.hackdetection.domain.validator;
 
-import com.fernandonieto.hackdetection.domain.model.LogFile;
+import com.fernandonieto.hackdetection.domain.model.LoginAction;
 
 import java.time.LocalDateTime;
 
@@ -10,6 +10,6 @@ public interface EntryValidator {
 
     LocalDateTime dateValidate(String date);
 
-    LogFile.LoginAction actionValidate(String action);
+    LoginAction actionValidate(String action);
 
 }
